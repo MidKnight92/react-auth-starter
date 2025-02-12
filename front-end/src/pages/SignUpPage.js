@@ -14,7 +14,7 @@ const SignUpPage = () => {
 
     return (
         <div className="content-container">
-            <h1>Log In</h1>
+            <h1>Sign up</h1>
             {error && (
                 <div>
                     {error}
@@ -23,6 +23,7 @@ const SignUpPage = () => {
             <input placeholder="example@gmail.com" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
             <input placeholder="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
             <input placeholder="confirm password" type="password" value={confirmedPassword} onChange={(e) => setConfirmedPassword(e.target.value)} />
+            <hr />
             <button onClick={handleSignUp} disabled={(!email && !password) || (password !== confirmedPassword)}>Sign Up</button>
             <button onClick={() => navigate('/login')}>Already have an account? Log In</button>
         </div>
