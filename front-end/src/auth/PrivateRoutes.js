@@ -1,7 +1,8 @@
-import { Navigate, Outlet, redirect } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
+import { useUser } from "./useUser";
 
 const PrivateRoutes = () => {
-    const isAuthenticated = null
+    const isAuthenticated = useUser(); 
     return isAuthenticated ? <Outlet /> : <Navigate to="/login" replace />
 }
 
