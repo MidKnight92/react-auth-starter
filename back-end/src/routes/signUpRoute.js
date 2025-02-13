@@ -10,9 +10,8 @@ export const signUpRoute = {
         const db = getDbConnection('react-auth-db');
         const user = await db.collection('users').findOne({ email });
         if (user) {
-            res.sendStatus(409);
+            return res.status(409).json({ message: 'Conflict: A user with the same email already exists.' });
         }
-
         const passwordHash = await bcrypt.hash(password, 10);
 
         const documentData = {
