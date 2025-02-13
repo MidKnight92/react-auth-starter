@@ -23,7 +23,7 @@ export const logInRoute = {
             (err, token) => {
                 if (err) {
                     console.error(err);
-                    return res.sendStatus(500);
+                    return res.status(500).json({ message: 'Error occurred.' });
                 }
                 res.status(200).json({ token });
             }
