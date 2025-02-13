@@ -15,3 +15,5 @@ export const getDbConnection = dbName => {
     const db = client.db(dbName);
     return db;
 }
+
+// sudo service mongodb start
