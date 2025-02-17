@@ -1,6 +1,8 @@
 import { getDbConnection } from '../db';
+import { v4 as uuid} from 'uuid';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import { sendEmail } from '../util/sendEmail';
 
 export const signUpRoute = {
     path: '/api/signup',
@@ -14,6 +16,7 @@ export const signUpRoute = {
                 return res.status(409).json({ message: 'Conflict: A user with the same email already exists.' });
             }
             const passwordHash = await bcrypt.hash(password, 10);
+            const verification = uuid();
 
             const documentData = {
                 email,
@@ -23,7 +26,17 @@ export const signUpRoute = {
                     bio: '',
                 },
                 isVerified: false,
+                verification,
             };
+
+            await sendEmail({
+                to: email,
+                from: process.env.EMAIL,
+                subject: 'Please verify your email',
+                text: `Thanks for signing up. To verify your email, click here:
+                    http://localhost:300/verify-email/${verification}
+                `
+            });
             const result = await db.collection('users').insertOne({ ...documentData, passwordHash });
 
             const { insertedId } = result;

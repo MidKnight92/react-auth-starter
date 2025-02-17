@@ -3,6 +3,7 @@ import { UserInfoPage } from './pages/UserInfoPage';
 import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
 import PrivateRoutes from './auth/PrivateRoutes';
+import PleaseVerifyEmailPage from './pages/PleaseVerifyEmailPage';
 
 
 export const App = () => {
@@ -15,6 +16,7 @@ export const App = () => {
                 {/* Private Routes */}
                 <Route path='/' element={<PrivateRoutes />}>
                     <Route index element={<UserInfoPage />} />
+                    <Route element={<PleaseVerifyEmailPage />} />
                 </Route>
             </Routes>
         </div>
