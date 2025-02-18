@@ -2,4 +2,4 @@ const PasswordResetSuccessPage = () => {
     return ();
 }
 
-export default PasswordResetSuccessPage;
+export default PasswordResetSuccessPage; 
