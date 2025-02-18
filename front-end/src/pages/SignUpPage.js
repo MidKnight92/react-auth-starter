@@ -20,7 +20,7 @@ const SignUpPage = () => {
 
             const { token } = response.data;
             setAuthToken(token);
-            navigate('/');
+            navigate('/please-verify');
         } catch (error) {
             if (axios.isAxiosError(error)) {
                 const { message } = error.response.data;
