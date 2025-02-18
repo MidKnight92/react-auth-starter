@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import PasswordResetSuccessPage from "./PasswordResetSucessPage";
-import PasswordResetUnsuccessfulPage from "./PasswordResetUnsuccessfulPage";
+import StatusMessageWrapper from "./StatusMessageWrapper";
 
 
 const PasswordResetLandingPage = () => {
@@ -36,7 +35,7 @@ const PasswordResetLandingPage = () => {
         );
     }
 
-    return isSuccessful ? <PasswordResetSuccessPage /> : <PasswordResetUnsuccessfulPage />;
+    return <StatusMessageWrapper />;
 }
 
 export default PasswordResetLandingPage;
