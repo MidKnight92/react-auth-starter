@@ -28,7 +28,7 @@ const PasswordResetLandingPage = () => {
     const checkPasswordsMatch = () => password.trim() && confirmPassword.trim() && password === confirmPassword;
     const handleClick = async () => {
         try {
-            await axios.put(`/api/users/${passwordResetCode}/reset-password`, { newPassword: password });
+            await axios.put(`/api/users/${passwordResetCode}/reset-password`, { password });
             setIsSuccessful(true);
         } catch (error) {
             setIsSuccessful(false);
