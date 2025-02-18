@@ -4,7 +4,7 @@ import { testEmailRoute } from './testEmailRoute';
 import { testRoute } from './testRoute';
 import { updateUserInfoRoute } from './updateUserInfoRoute';
 import { verifyEmailRoute } from './verifyEmailRoute';
-
+import { forgotPasswordRoute } from './forgotPasswordRoute';
 
 const testRoutes = [
     testRoute,
@@ -15,7 +15,8 @@ const routes = [
     signUpRoute,
     logInRoute,
     updateUserInfoRoute,
-    verifyEmailRoute
+    verifyEmailRoute,
+    forgotPasswordRoute
 ];
 
 if (process.env.NODE_ENV === 'development') {

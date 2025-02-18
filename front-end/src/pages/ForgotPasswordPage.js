@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const REDIRECT_DELAY = 3000;
 
-const ForgotPassword = () => {
+const ForgotPasswordPage = () => {
     const [email, setEmail] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const [isSuccessful, setIsSuccessful] = useState(false);
@@ -18,7 +18,7 @@ const ForgotPassword = () => {
         }, REDIRECT_DELAY);
         }
         return () => clearTimeout(timeoutId);
-    }, [isSuccessful]);
+    }, [isSuccessful, navigate]);
 
     const handleSubmit = async () => {
         try {
@@ -40,4 +40,4 @@ const ForgotPassword = () => {
     );
 }
 
-export default ForgotPassword;
+export default ForgotPasswordPage;

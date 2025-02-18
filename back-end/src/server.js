@@ -12,8 +12,8 @@ app.use(express.json());
 
 // Add all the routes to our Express server
 // exported from routes/index.js
-routes.forEach(route => {
-    app[route.method](route.path, route.handler);
+routes.forEach(({method, path, handler}) => {
+    app[method](path, handler);
 });
 
 // Connect to the database, then start the server.
