@@ -6,7 +6,7 @@ import PrivateRoutes from './auth/PrivateRoutes';
 import PleaseVerifyEmailPage from './pages/PleaseVerifyEmailPage';
 import EmailVerficationLandingPage from './pages/EmailVerficationLandingPage';
 import ForgotPasswordPage from './pages/ForgotPasswordPage';
-
+import PasswordResetLandingPage from './pages/PasswordRestLandingPage';
 
 export const App = () => {
     return (
@@ -15,12 +15,13 @@ export const App = () => {
                 {/* Public Routes */}
                 <Route path='/login' element={<LoginPage />} />
                 <Route path='/signup' element={<SignUpPage />} />
-                <Route path='/forgot-password' element={<ForgotPasswordPage />} />                
+                <Route path='/forgot-password' element={<ForgotPasswordPage />} />
+                <Route path="/reset-password/:passwordResetCode" element={<PasswordResetLandingPage />} />
+                <Route path="/please-verify" element={<PleaseVerifyEmailPage />} />
+                <Route path="/verify-email/:verfication" element={<EmailVerficationLandingPage />} />
                 {/* Private Routes */}
                 <Route path='/' element={<PrivateRoutes />}>
                     <Route index element={<UserInfoPage />} />
-                    <Route path="/please-verify" element={<PleaseVerifyEmailPage />} />
-                    <Route path="/verify-email/:verfication" element={<EmailVerficationLandingPage />} />
                 </Route>
             </Routes>
         </div>

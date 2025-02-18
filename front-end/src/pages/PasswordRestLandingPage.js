@@ -4,6 +4,20 @@ import axios from "axios";
 import StatusMessageWrapper from "./StatusMessageWrapper";
 
 
+const successProps = {
+    header: 'Password Reset was Successful',
+    message: "Your password was successfully reset. Please login with your new password.",
+    path: '/login',
+    buttonText: 'Log in',
+}
+
+const failureProps = {
+    header: 'Password Reset was Unsuccessful',
+    message: "Uh oh... Something went wrong while trying to reset your password.",
+    path: '/login',
+    buttonText: 'Log in',
+}
+
 const PasswordResetLandingPage = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -35,7 +49,7 @@ const PasswordResetLandingPage = () => {
         );
     }
 
-    return <StatusMessageWrapper />;
+    return isSuccessful ? <StatusMessageWrapper {...successProps} /> : <StatusMessageWrapper {...failureProps} />;
 }
 
 export default PasswordResetLandingPage;
