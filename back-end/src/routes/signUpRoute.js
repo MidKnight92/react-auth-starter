@@ -15,7 +15,9 @@ export const signUpRoute = {
             if (user) {
                 return res.status(409).json({ message: 'Conflict: A user with the same email already exists.' });
             }
-            const passwordHash = await bcrypt.hash(password, 10);
+            const salt = uuid();
+            const pepper = process.env.PEPPER;
+            const passwordHash = await bcrypt.hash(`${salt}${password}${pepper}`, 10);
             const verification = uuid();
 
             const documentData = {
@@ -27,6 +29,7 @@ export const signUpRoute = {
                 },
                 isVerified: false,
                 verification,
+                salt,
             };
 
             await sendEmail({

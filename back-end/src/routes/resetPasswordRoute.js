@@ -10,10 +10,12 @@ export const resetPasswordRoute = {
             const { passwordResetCode } = req.params;
             const { password } = req.body;
             if (!password || !passwordResetCode) return res.status(400).json({ message: 'A password and password reset code is required.' })
-            const passwordHash = await bcrypt.hash(password, 10);
+            const salt = uuid();
+            const pepper = process.env.PEPPER;
+            const passwordHash = await bcrypt.hash(`${salt}${password}${pepper}`, 10);            
             const db = getDbConnection('react-auth-db');
             const result = await db.collection('users').findOneAndUpdate({ passwordResetCode }, {
-                $set: { passwordHash },
+                $set: { passwordHash, salt },
                 $unset: { passwordResetCode: '' },
             },
                 { returnDocument: 'after' });
